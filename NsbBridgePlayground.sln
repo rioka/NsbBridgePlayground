@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Shared", "NsbBridgePlayground.Shared\NsbBridgePlayground.Shared.csproj", "{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Sender", "NsbBridgePlayground.Sender\NsbBridgePlayground.Sender.csproj", "{94233011-B3E0-4DBB-91AF-FC099F47026C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
