@@ -25,7 +25,7 @@ internal partial class Program
           var createOrder = new CreateOrder() {
             Id = Guid.NewGuid()
           };
-          await session.Send(Endpoints.OrderProcessor, createOrder);
+          await session.Send(createOrder);
           break;
 
         default:

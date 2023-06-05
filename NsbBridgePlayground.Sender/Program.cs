@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NsbBridgePlayground.Shared;
 using NsbBridgePlayground.Shared.Infrastructure;
+using NsbBridgePlayground.Shared.Messages.Commands;
 using NServiceBus;
 
 namespace NsbBridgePlayground.Sender;
@@ -26,7 +27,7 @@ internal partial class Program
       await SendMessages(session); 
 
       lifetime.StopApplication();
-      await host.WaitForShutdownAsync();      
+      await host.WaitForShutdownAsync();
     }
   }
 
@@ -37,7 +38,9 @@ internal partial class Program
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.Sender, ctx.Configuration.GetConnectionString("Data"));
+        var endpointConfig = Bootstrapper.Configure(Endpoints.Sender, ctx.Configuration.GetConnectionString("Data"), messages: new [] {
+          typeof(CreateOrder)
+        });
         return endpointConfig;
       });
     
