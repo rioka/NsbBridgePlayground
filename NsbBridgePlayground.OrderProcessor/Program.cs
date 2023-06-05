@@ -5,7 +5,10 @@ using NsbBridgePlayground.Shared;
 using NsbBridgePlayground.Shared.Infrastructure;
 using NServiceBus;
 
-internal class Program {
+namespace NsbBridgePlayground.OrderProcessor;
+
+internal class Program
+{
   public static async Task Main(string[] args)
   {
     var host = CreateHostBuilder(args)
@@ -13,7 +16,7 @@ internal class Program {
 
     var config = host.Services.GetRequiredService<IConfiguration>();
     await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Data"));
-    
+
     await host.RunAsync();
   }
 
@@ -22,12 +25,12 @@ internal class Program {
     var hb = Host
       .CreateDefaultBuilder()
       .UseConsoleLifetime()
-      .UseNServiceBus(ctx =>  {
+      .UseNServiceBus(ctx => {
 
         var endpointConfig = Bootstrapper.Configure(Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("Data"));
         return endpointConfig;
       });
-    
+
     return hb;
   }
 }
