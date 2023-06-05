@@ -2,7 +2,7 @@
 
 namespace NsbBridgePlayground.Shared.Messages.Commands;
 
-[NsbCommand(Endpoints.Sender)]
+[NsbCommand(Endpoints.OrderProcessor)]
 public class CreateOrder
 {
   public Guid Id { get; set; }
