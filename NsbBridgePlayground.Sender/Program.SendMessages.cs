@@ -2,6 +2,8 @@
 using NsbBridgePlayground.Shared.Messages.Commands;
 using NServiceBus;
 
+namespace NsbBridgePlayground.Sender;
+
 internal partial class Program
 {
   private static async Task SendMessages(IMessageSession session)

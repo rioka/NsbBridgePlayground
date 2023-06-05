@@ -5,6 +5,8 @@ using NsbBridgePlayground.Shared;
 using NsbBridgePlayground.Shared.Infrastructure;
 using NServiceBus;
 
+namespace NsbBridgePlayground.Sender;
+
 internal partial class Program
 {
   public static async Task Main(string[] args)
