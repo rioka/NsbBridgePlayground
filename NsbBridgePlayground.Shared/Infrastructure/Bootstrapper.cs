@@ -10,13 +10,13 @@ public class Bootstrapper
     return Endpoint.Start(Configure(endpointName, connectionString));
   }
 
-  public static EndpointConfiguration Configure(string endpointName, string connectionString)
+  public static EndpointConfiguration Configure(string endpointName, string connectionString, string? nsbSchema = null)
   {
     var config = new EndpointConfiguration(endpointName);
 
     ConfigureRouting(config);
-    ConfigureTransport(config, connectionString);
-    ConfigurePersistence(config, connectionString);
+    ConfigureTransport(config, connectionString, nsbSchema);
+    ConfigurePersistence(config, connectionString, nsbSchema);
 
     config.AuditProcessedMessagesTo("audit");
     config.SendFailedMessagesTo("error");
@@ -34,23 +34,31 @@ public class Bootstrapper
     config.Conventions().DefiningEventsAs(t => t.Namespace?.Contains("Messages.Events") ?? false);
   }
 
-  private static void ConfigureTransport(EndpointConfiguration config, string connectionString)
+  private static void ConfigureTransport(EndpointConfiguration config, string connectionString, string? nsbSchema = null)
   {
     var transport = config.UseTransport<SqlServerTransport>();
     transport
       .Transactions(TransportTransactionMode.TransactionScope)
-      .DefaultSchema("nsb")
       .ConnectionString(connectionString);
+
+    if (!string.IsNullOrWhiteSpace(nsbSchema))
+    {
+      transport.DefaultSchema(nsbSchema);
+    }
   }
 
-  private static void ConfigurePersistence(EndpointConfiguration config, string connectionString)
+  private static void ConfigurePersistence(EndpointConfiguration config, string connectionString, string? nsbSchema = null)
   {
     var persistence = config.UsePersistence<SqlPersistence>();
     persistence
       .ConnectionBuilder(() => new SqlConnection(connectionString));
-    persistence
-      .SqlDialect<SqlDialect.MsSqlServer>()
-      .Schema("nsb");
+    var sqlSettings = persistence
+      .SqlDialect<SqlDialect.MsSqlServer>();
+    
+    if (!string.IsNullOrWhiteSpace(nsbSchema))
+    {
+      sqlSettings.Schema(nsbSchema);
+    }
   }
 
   #endregion    
