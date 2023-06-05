@@ -33,7 +33,7 @@ internal partial class Program
   private static IHostBuilder CreateHostBuilder(string[] args)
   {
     var hb = Host
-      .CreateDefaultBuilder()
+      .CreateDefaultBuilder(args)
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
