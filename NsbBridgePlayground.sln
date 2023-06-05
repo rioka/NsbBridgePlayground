@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Sender"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.OrderProcessor", "NsbBridgePlayground.OrderProcessor\NsbBridgePlayground.OrderProcessor.csproj", "{646F7F16-7AFE-4D04-8CC1-4343FC942989}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Notifier", "NsbBridgePlayground.Notifier\NsbBridgePlayground.Notifier.csproj", "{CCD4FB1C-650B-44F5-8079-B11C50723796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +41,9 @@ Global
 		{646F7F16-7AFE-4D04-8CC1-4343FC942989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{646F7F16-7AFE-4D04-8CC1-4343FC942989}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{646F7F16-7AFE-4D04-8CC1-4343FC942989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
