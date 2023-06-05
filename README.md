@@ -25,3 +25,12 @@ OrderProcessor -[dotted]> Notifier : ""OrderCreated""
 ```
 
 Initially, the system does not depend on the bridge.
+
+## Required Changes
+
+- Commands do not need any specific configuration: we can drop any router-dependent settings. 
+
+## References
+
+- [Migrating from NServiceBus.Router to NServiceBus.Transport.Bridge](https://docs.particular.net/nservicebus/bridge/migrating-from-router)
+

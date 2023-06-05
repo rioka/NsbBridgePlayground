@@ -2,7 +2,7 @@
 
 public class Endpoints
 {
-  public static string Sender = "Sender"; 
-  public static string OrderProcessor = "OrderProcessor"; 
-  public static string Notifier = "Notifier"; 
+  public const string Sender = "Sender"; 
+  public const string OrderProcessor = "OrderProcessor"; 
+  public const string Notifier = "Notifier"; 
 }
