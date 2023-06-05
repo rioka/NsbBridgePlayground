@@ -32,6 +32,7 @@ END
     var (cnnStr, dbName) = ProcessConnectionString(connectionString);
     using (var cn = new SqlConnection(cnnStr))
     {
+      await cn.OpenAsync();
       using (var cmd = cn.CreateCommand())
       {
         cmd.CommandText = CreateDatabaseIfMissing.Replace(DatabaseNameToken, dbName);
@@ -53,6 +54,7 @@ END
   {
     using (var cn = new SqlConnection(cnnStr))
     {
+      await cn.OpenAsync();
       using (var cmd = cn.CreateCommand())
       {
         cmd.CommandText = CreateSchemaIfMissing.Replace(SchemaNameToken, schemaName);
