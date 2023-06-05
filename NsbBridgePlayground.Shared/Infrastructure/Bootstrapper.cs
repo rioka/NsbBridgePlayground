@@ -10,7 +10,7 @@ public class Bootstrapper
     return Endpoint.Start(Configure(endpointName, connectionString));
   }
 
-  public static EndpointConfiguration Configure(string endpointName, string connectionString, string? nsbSchema = null)
+  public static EndpointConfiguration Configure(string endpointName, string connectionString, string? nsbSchema = "nsb")
   {
     var config = new EndpointConfiguration(endpointName);
 
