@@ -14,12 +14,13 @@ internal partial class Program
 
     using (host)
     {
+      var config = host.Services.GetRequiredService<IConfiguration>();
+      await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Data"));
+      
       await host.StartAsync();
       var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
       var session = host.Services.GetRequiredService<IMessageSession>();
-      var config = host.Services.GetRequiredService<IConfiguration>();
 
-      await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Data"));
       await SendMessages(session); 
 
       lifetime.StopApplication();
