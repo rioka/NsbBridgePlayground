@@ -27,7 +27,7 @@ BEGIN
 END    
 ";
 
-  public static async Task EnsureDatabaseExists(string connectionString, string? schemaName = null)
+  public static async Task EnsureDatabaseExists(string connectionString, string? schemaName = "nsb")
   {
     var (cnnStr, dbName) = ProcessConnectionString(connectionString);
     using (var cn = new SqlConnection(cnnStr))
