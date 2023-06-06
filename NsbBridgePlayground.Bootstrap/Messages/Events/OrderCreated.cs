@@ -1,4 +1,5 @@
 using NsbBridgePlayground.Bootstrap.Attributes;
+using NsbBridgePlayground.Common;
 
 namespace NsbBridgePlayground.Bootstrap.Messages.Events;
 

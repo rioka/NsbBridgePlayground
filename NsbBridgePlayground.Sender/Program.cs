@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NsbBridgePlayground.Bootstrap;
 using NsbBridgePlayground.Bootstrap.Infrastructure;
 using NsbBridgePlayground.Bootstrap.Messages.Commands;
+using NsbBridgePlayground.Common;
 using NServiceBus;
 
 namespace NsbBridgePlayground.Sender;

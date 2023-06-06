@@ -4,4 +4,8 @@
     <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.6.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
+  </ItemGroup>
+
 </Project>

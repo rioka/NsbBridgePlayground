@@ -20,6 +20,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\NsbBridgePlayground.Bootstrap\NsbBridgePlayground.Bootstrap.csproj" />
+    <ProjectReference Include="..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
   </ItemGroup>
   
 </Project>
