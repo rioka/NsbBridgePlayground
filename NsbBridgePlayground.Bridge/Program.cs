@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using NsbBridgePlayground.Common;
+using NsbBridgePlayground.Common.Attributes;
+using NsbBridgePlayground.Common.Messages.Events;
+using System.Reflection;
 
 namespace NsbBridgePlayground.Bridge;
 
@@ -23,7 +26,9 @@ internal class Program
 
         AddConfiguration(config, Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"));
         AddConfiguration(config, Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("OrderProcessor"));
-        AddConfiguration(config, Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"));
+        AddConfiguration(config, Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"), subscribedEvents: new [] {
+          typeof(OrderCreated)
+        });
         
         config.RunInReceiveOnlyTransactionMode();
       });
@@ -34,7 +39,8 @@ internal class Program
   private static void AddConfiguration(BridgeConfiguration bridgeConfig,
     string endpoint,
     string? connectionString,
-    string? nsbSchema = "nsb")
+    string? nsbSchema = "nsb",
+    IEnumerable<Type>? subscribedEvents = null)
   {
     if (string.IsNullOrWhiteSpace(connectionString))
     {
@@ -53,8 +59,23 @@ internal class Program
       Name = $"For{endpoint}",
       AutoCreateQueues = true
     };
-    bridgeTransport.HasEndpoint(endpoint);
+
+    var bridgeEndpoint = new BridgeEndpoint(endpoint);
+
+    foreach (var type in subscribedEvents ?? Enumerable.Empty<Type>())
+    {
+      var routingInfo = type.GetCustomAttribute<NsbEventAttribute>();
+      if (routingInfo != null)
+      {
+        bridgeEndpoint.RegisterPublisher(type, routingInfo.Publisher);
+      }
+      // else
+      // {
+      //   // throw?
+      // }
+    }
     
+    bridgeTransport.HasEndpoint(bridgeEndpoint);
     bridgeConfig.AddTransport(bridgeTransport);
   }
 }
