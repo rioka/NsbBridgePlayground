@@ -3,7 +3,7 @@ using NsbBridgePlayground.Common.Attributes;
 using NServiceBus;
 using System.Reflection;
 
-namespace NsbBridgePlayground.Bootstrap.Infrastructure;
+namespace NsbBridgePlayground.Bootstrap;
 
 public class Bootstrapper
 {
