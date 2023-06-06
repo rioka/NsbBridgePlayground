@@ -1,4 +1,4 @@
-namespace NsbBridgePlayground.Shared.Attributes;
+namespace NsbBridgePlayground.Bootstrap.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class NsbCommandAttribute : Attribute

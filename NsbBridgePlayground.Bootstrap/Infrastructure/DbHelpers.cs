@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace NsbBridgePlayground.Shared.Infrastructure;
+namespace NsbBridgePlayground.Bootstrap.Infrastructure;
 
 public class DbHelpers
 {

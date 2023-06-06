@@ -1,4 +1,4 @@
-﻿namespace NsbBridgePlayground.Shared;
+﻿namespace NsbBridgePlayground.Bootstrap;
 
 public class Endpoints
 {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
-using NsbBridgePlayground.Shared.Attributes;
+using NsbBridgePlayground.Bootstrap.Attributes;
 using NServiceBus;
 using System.Reflection;
 
-namespace NsbBridgePlayground.Shared.Infrastructure;
+namespace NsbBridgePlayground.Bootstrap.Infrastructure;
 
 public class Bootstrapper
 {
