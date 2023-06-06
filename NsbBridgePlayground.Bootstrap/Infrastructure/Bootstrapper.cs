@@ -1,5 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
-using NsbBridgePlayground.Bootstrap.Attributes;
+using NsbBridgePlayground.Common.Attributes;
 using NServiceBus;
 using System.Reflection;
 

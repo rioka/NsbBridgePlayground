@@ -1,4 +1,4 @@
-﻿using NsbBridgePlayground.Bootstrap.Messages.Commands;
+﻿using NsbBridgePlayground.Common.Messages.Commands;
 using NServiceBus;
 
 namespace NsbBridgePlayground.Sender;

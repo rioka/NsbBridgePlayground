@@ -1,4 +1,4 @@
-namespace NsbBridgePlayground.Bootstrap.Attributes;
+namespace NsbBridgePlayground.Common.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class NsbEventAttribute : Attribute
