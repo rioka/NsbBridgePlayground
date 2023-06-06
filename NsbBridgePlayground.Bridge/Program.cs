@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using NsbBridgePlayground.Shared;
+using NsbBridgePlayground.Bootstrap;
 
 namespace NsbBridgePlayground.Bridge;
 
