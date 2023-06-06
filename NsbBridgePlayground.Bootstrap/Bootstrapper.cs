@@ -63,25 +63,13 @@ public class Bootstrapper
   {
     foreach (var type in messages)
     {
-      var routingInfo = type.GetCustomAttribute<NsbCommandAttribute>() as Attribute ?? type.GetCustomAttribute<NsbEventAttribute>();
+      var routingInfo = type.GetCustomAttribute<NsbCommandAttribute>();
       if (routingInfo is null)
       {
         continue;
       }
 
-      switch (routingInfo)
-      {
-        case NsbCommandAttribute command:
-          routing.RouteToEndpoint(type, command.Recipient);
-          break;
-        
-        case NsbEventAttribute @event:
-          // native subscription, nothing to do so far
-          break;
-        
-        default:
-          throw new NotSupportedException($"Unsupported attribute {routingInfo.GetType()} for {type}");
-      }
+      routing.RouteToEndpoint(type, routingInfo.Recipient);
     }
   }
 
