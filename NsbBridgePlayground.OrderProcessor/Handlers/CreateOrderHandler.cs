@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using NsbBridgePlayground.Common.Messages;
 using NsbBridgePlayground.Common.Messages.Commands;
 using NsbBridgePlayground.Common.Messages.Events;
 using NServiceBus;
@@ -21,6 +22,10 @@ internal class CreateOrderHandler : IHandleMessages<CreateOrder>
 
     await context.Publish(new OrderCreated() {
       Id = message.Id
+    });
+    await context.Reply(new CreateOrderResponse() {
+      Id = message.Id,
+      Notes = $"Created at {DateTime.UtcNow}"
     });
   }
 }

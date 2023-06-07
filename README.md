@@ -46,9 +46,9 @@ Bridge: forwards ""CreateOrder"" command to ""OrderProcessor""
 Bridge: forwards ""CreateOrderResponse"" message to ""Sender""
 Bridge: forwards ""OrderCreated"" event to ""Notifier"" and ""Shipping""
 
-Bridge -[#red,dotted]--> OrderProcessor : ""CreateOrder""  
+Sender -[#red,dashed]right-> Bridge : **(1)** ""CreateOrder""
 
-Sender -[#red,dashed]> Bridge : ""CreateOrder""
+Bridge -[#red,dotted]right-> OrderProcessor : **(2)** ""CreateOrder""  
 
 OrderProcessor: process ""CreateOrder"" command
 OrderProcessor: publish ""OrderCreated"" event
@@ -57,11 +57,11 @@ OrderProcessor: reply ""CreateOrderResponse"" message
 Notifier: process ""OrderCreated"" events
 Shipping: process ""OrderCreated"" events
 
-OrderProcessor -[#green,dashed]> Bridge : ""OrderCreated""
-OrderProcessor -[#green,dashed]> Bridge : ""CreateOrderResponse""
-Bridge -[#green,dotted]-> Notifier : ""OrderCreated""
-Bridge -[#green,dotted]-> Shipping : ""OrderCreated""
-Bridge -[#green,dotted]-> Sender : ""CreateOrderResponse""
+OrderProcessor -[#green,dashed]> Bridge : **(3)** ""OrderCreated""
+OrderProcessor -[#green,dashed]> Bridge : **(3)** ""CreateOrderResponse""
+Bridge -[#green,dotted]-> Notifier : **(4)** ""OrderCreated""
+Bridge -[#green,dotted]-> Shipping : **(4)** ""OrderCreated""
+Bridge -[#green,dotted]-> Sender : **(4)** ""CreateOrderResponse""
 ```
 
 ## Required Changes
@@ -94,6 +94,12 @@ Initially, the system does not depend on the bridge.
 > - the bridge must be redeployed (or reconfigured, if we build some tool) whenever an endpoint subscribes to events published by other endpoints, or sends commands to other endpoints.
 >
 > We could develop some tool that generates a map of dependencies (there's already a POC for that), and use the result to drive the bridge configuration, for example providing it as a json. 
+
+## TODOs
+
+- Test behavior when one or more servers are offline
+ 
+  Does it implement any circuit-breaker, similar to `NServiceBus.Router`?
 
 ## References
 
