@@ -29,6 +29,9 @@ internal class Program
         AddConfiguration(config, Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"), subscribedEvents: new [] {
           typeof(OrderCreated)
         });
+        AddConfiguration(config, Endpoints.Shipping, ctx.Configuration.GetConnectionString("Shipping"), subscribedEvents: new [] {
+          typeof(OrderCreated)
+        });
         
         config.RunInReceiveOnlyTransactionMode();
       });
