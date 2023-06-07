@@ -17,9 +17,18 @@
 ```puml
 @startuml
 
-Sender:
+Sender: sends ""CreateOrder"" command
+Sender: processes ""CreateOrderResponse"" message
 
-Sender --> OrderProcessor : ""CreateOrder""  
+OrderProcessor: processes ""CreateOrder"" command
+OrderProcessor: publishes ""OrderCreated"" event
+OrderProcessor: replies ""CreateOrderResponse"" message
+
+Notifier: processes ""OrderCreated"" event
+Shipping: processes ""OrderCreated"" event
+
+Sender --> OrderProcessor : ""CreateOrder""
+OrderProcessor --> Sender : ""CreateOrderResponse""    
 
 OrderProcessor -[dotted]> Notifier : ""OrderCreated""
 OrderProcessor -[dotted]> Shipping : ""OrderCreated""
@@ -31,8 +40,10 @@ OrderProcessor -[dotted]> Shipping : ""OrderCreated""
 @startuml
 
 Sender: sends ""CreateOrder"" command
+Sender: processes ""CreateOrderResponse"" message
 
 Bridge: forwards ""CreateOrder"" command to ""OrderProcessor""
+Bridge: forwards ""CreateOrderResponse"" message to ""Sender""
 Bridge: forwards ""OrderCreated"" event to ""Notifier"" and ""Shipping""
 
 Bridge -[#red,dotted]--> OrderProcessor : ""CreateOrder""  
@@ -40,12 +51,17 @@ Bridge -[#red,dotted]--> OrderProcessor : ""CreateOrder""
 Sender -[#red,dashed]> Bridge : ""CreateOrder""
 
 OrderProcessor: process ""CreateOrder"" command
+OrderProcessor: publish ""OrderCreated"" event
+OrderProcessor: reply ""CreateOrderResponse"" message
 
 Notifier: process ""OrderCreated"" events
+Shipping: process ""OrderCreated"" events
 
 OrderProcessor -[#green,dashed]> Bridge : ""OrderCreated""
+OrderProcessor -[#green,dashed]> Bridge : ""CreateOrderResponse""
 Bridge -[#green,dotted]-> Notifier : ""OrderCreated""
 Bridge -[#green,dotted]-> Shipping : ""OrderCreated""
+Bridge -[#green,dotted]-> Sender : ""CreateOrderResponse""
 ```
 
 ## Required Changes
