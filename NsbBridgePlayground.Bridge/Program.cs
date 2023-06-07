@@ -59,7 +59,7 @@ internal class Program
     
     var bridgeTransport = new BridgeTransport(sqlTransport) {
       // all transports are SqlServerTransport, so we give each a name to be able to identify the proper one in logs
-      Name = $"For{endpoint}",
+      Name = $"SQL-{endpoint}",
       AutoCreateQueues = true
     };
 
