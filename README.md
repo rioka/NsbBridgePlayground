@@ -5,6 +5,7 @@
 | `NsbBridgePlayground.Sender`         |                                            |
 | `NsbBridgePlayground.OrderProcessor` |                                            |
 | `NsbBridgePlayground.Notifier`       |                                            |
+| `NsbBridgePlayground.Shipping`       |                                            |
 | `NsbBridgePlayground.Bridge`         |                                            |
 | `NsbBridgePlayground.Common`         | Messages and infrastructure components     |
 | `NsbBridgePlayground.Bootstrap`      | Component to configure and start endpoints |
@@ -21,6 +22,7 @@ Sender:
 Sender --> OrderProcessor : ""CreateOrder""  
 
 OrderProcessor -[dotted]> Notifier : ""OrderCreated""
+OrderProcessor -[dotted]> Shipping : ""OrderCreated""
 ```
 
 ### Using the bridge
@@ -31,9 +33,9 @@ OrderProcessor -[dotted]> Notifier : ""OrderCreated""
 Sender: sends ""CreateOrder"" command
 
 Bridge: forwards ""CreateOrder"" command to ""OrderProcessor""
-Bridge: forwards ""OrderCreated"" event to ""Notifier""
+Bridge: forwards ""OrderCreated"" event to ""Notifier"" and ""Shipping""
 
-Bridge -[#red,dashed]--> OrderProcessor : ""CreateOrder""  
+Bridge -[#red,dotted]--> OrderProcessor : ""CreateOrder""  
 
 Sender -[#red,dashed]> Bridge : ""CreateOrder""
 
@@ -41,8 +43,9 @@ OrderProcessor: process ""CreateOrder"" command
 
 Notifier: process ""OrderCreated"" events
 
-OrderProcessor -[#green,dotted]> Bridge : ""OrderCreated""
-Bridge -[#green,dotted]> Notifier : ""OrderCreated""
+OrderProcessor -[#green,dashed]> Bridge : ""OrderCreated""
+Bridge -[#green,dotted]-> Notifier : ""OrderCreated""
+Bridge -[#green,dotted]-> Shipping : ""OrderCreated""
 ```
 
 ## Required Changes
