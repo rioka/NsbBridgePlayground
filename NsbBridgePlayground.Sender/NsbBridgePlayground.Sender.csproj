@@ -7,11 +7,15 @@
   <ItemGroup>
     <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
   
   <ItemGroup>
-    <None Update="appsettings.json">
+    <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NsbBridgePlayground.Shared\NsbBridgePlayground.Shared.csproj" />
+    <ProjectReference Include="..\NsbBridgePlayground.Bootstrap\NsbBridgePlayground.Bootstrap.csproj" />
+    <ProjectReference Include="..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
   </ItemGroup>
 
 </Project>

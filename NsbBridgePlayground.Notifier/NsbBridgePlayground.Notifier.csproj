@@ -9,13 +9,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NsbBridgePlayground.Shared\NsbBridgePlayground.Shared.csproj" />
+    <ProjectReference Include="..\NsbBridgePlayground.Bootstrap\NsbBridgePlayground.Bootstrap.csproj" />
+    <ProjectReference Include="..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
   </ItemGroup>
   
 </Project>

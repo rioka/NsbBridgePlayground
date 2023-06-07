@@ -12,13 +12,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Shared", "NsbBridgePlayground.Shared\NsbBridgePlayground.Shared.csproj", "{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Sender", "NsbBridgePlayground.Sender\NsbBridgePlayground.Sender.csproj", "{94233011-B3E0-4DBB-91AF-FC099F47026C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.OrderProcessor", "NsbBridgePlayground.OrderProcessor\NsbBridgePlayground.OrderProcessor.csproj", "{646F7F16-7AFE-4D04-8CC1-4343FC942989}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Notifier", "NsbBridgePlayground.Notifier\NsbBridgePlayground.Notifier.csproj", "{CCD4FB1C-650B-44F5-8079-B11C50723796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Bridge", "NsbBridgePlayground.Bridge\NsbBridgePlayground.Bridge.csproj", "{B81EC69D-9154-41B6-8A8C-F4EEEC225B52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Bootstrap", "NsbBridgePlayground.Bootstrap\NsbBridgePlayground.Bootstrap.csproj", "{1C73EA2A-259C-413D-968F-829B1DC2FE07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Common", "NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj", "{F44ABD52-1A40-451C-8F98-34B7995064D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +33,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E27C3CB5-75FD-4894-8311-4DDE8C6FF439}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94233011-B3E0-4DBB-91AF-FC099F47026C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,5 +45,17 @@ Global
 		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD4FB1C-650B-44F5-8079-B11C50723796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C73EA2A-259C-413D-968F-829B1DC2FE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C73EA2A-259C-413D-968F-829B1DC2FE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C73EA2A-259C-413D-968F-829B1DC2FE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C73EA2A-259C-413D-968F-829B1DC2FE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F44ABD52-1A40-451C-8F98-34B7995064D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44ABD52-1A40-451C-8F98-34B7995064D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44ABD52-1A40-451C-8F98-34B7995064D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44ABD52-1A40-451C-8F98-34B7995064D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

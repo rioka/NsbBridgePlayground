@@ -1,5 +1,4 @@
-﻿using NsbBridgePlayground.Shared;
-using NsbBridgePlayground.Shared.Messages.Commands;
+﻿using NsbBridgePlayground.Common.Messages.Commands;
 using NServiceBus;
 
 namespace NsbBridgePlayground.Sender;
@@ -25,7 +24,7 @@ internal partial class Program
           var createOrder = new CreateOrder() {
             Id = Guid.NewGuid()
           };
-          await session.Send(Endpoints.OrderProcessor, createOrder);
+          await session.Send(createOrder);
           break;
 
         default:

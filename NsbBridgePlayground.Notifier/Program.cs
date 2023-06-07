@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NsbBridgePlayground.Shared;
-using NsbBridgePlayground.Shared.Infrastructure;
+using NsbBridgePlayground.Bootstrap;
+using NsbBridgePlayground.Bootstrap.Infrastructure;
+using NsbBridgePlayground.Common;
 using NServiceBus;
 
 namespace NsbBridgePlayground.Notifier;

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
+using NsbBridgePlayground.Common.Attributes;
 using NServiceBus;
+using System.Reflection;
 
-namespace NsbBridgePlayground.Shared.Infrastructure;
+namespace NsbBridgePlayground.Bootstrap;
 
 public class Bootstrapper
 {
@@ -10,12 +12,16 @@ public class Bootstrapper
     return Endpoint.Start(Configure(endpointName, connectionString));
   }
 
-  public static EndpointConfiguration Configure(string endpointName, string connectionString, string? nsbSchema = "nsb")
+  public static EndpointConfiguration Configure(
+    string endpointName, 
+    string connectionString, 
+    string? nsbSchema = "nsb", 
+    IEnumerable<Type>? messages = null)
   {
     var config = new EndpointConfiguration(endpointName);
 
-    ConfigureRouting(config);
-    ConfigureTransport(config, connectionString, nsbSchema);
+    ConfigureConventions(config);
+    ConfigureTransport(config, connectionString, nsbSchema, messages);
     ConfigurePersistence(config, connectionString, nsbSchema);
 
     config.AuditProcessedMessagesTo("audit");
@@ -28,13 +34,17 @@ public class Bootstrapper
 
   #region Internals
 
-  private static void ConfigureRouting(EndpointConfiguration config)
+  private static void ConfigureConventions(EndpointConfiguration config)
   {
     config.Conventions().DefiningCommandsAs(t => t.Namespace?.Contains("Messages.Commands") ?? false);
     config.Conventions().DefiningEventsAs(t => t.Namespace?.Contains("Messages.Events") ?? false);
   }
 
-  private static void ConfigureTransport(EndpointConfiguration config, string connectionString, string? nsbSchema = null)
+  private static void ConfigureTransport(
+    EndpointConfiguration config, 
+    string connectionString,
+    string? nsbSchema = null,
+    IEnumerable<Type>? messages = null)
   {
     var transport = config.UseTransport<SqlServerTransport>();
     transport
@@ -44,6 +54,22 @@ public class Bootstrapper
     if (!string.IsNullOrWhiteSpace(nsbSchema))
     {
       transport.DefaultSchema(nsbSchema);
+    }
+
+    ConfigureRoutes(transport.Routing(), messages ?? Enumerable.Empty<Type>());
+  }
+
+  private static void ConfigureRoutes(RoutingSettings<SqlServerTransport> routing, IEnumerable<Type> messages)
+  {
+    foreach (var type in messages)
+    {
+      var routingInfo = type.GetCustomAttribute<NsbCommandAttribute>();
+      if (routingInfo is null)
+      {
+        continue;
+      }
+
+      routing.RouteToEndpoint(type, routingInfo.Recipient);
     }
   }
 

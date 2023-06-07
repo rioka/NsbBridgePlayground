@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.*" />
+    <PackageReference Include="NServiceBus" Version="8.0.*" />
+    <PackageReference Include="NServiceBus.Transport.Bridge" Version="1.0.*" />
+    <PackageReference Include="NServiceBus.Transport.SqlServer" Version="7.0.*" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.json" />        
+    <None Remove="appsettings.json" />
   </ItemGroup>
   
   <ItemGroup>
@@ -19,8 +22,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\NsbBridgePlayground.Bootstrap\NsbBridgePlayground.Bootstrap.csproj" />
     <ProjectReference Include="..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
   </ItemGroup>
-  
+
 </Project>

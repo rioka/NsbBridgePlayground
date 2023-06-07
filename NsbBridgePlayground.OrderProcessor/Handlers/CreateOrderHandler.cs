@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
-using NsbBridgePlayground.Shared.Messages.Commands;
-using NsbBridgePlayground.Shared.Messages.Events;
+using NsbBridgePlayground.Common.Messages.Commands;
+using NsbBridgePlayground.Common.Messages.Events;
 using NServiceBus;
 
 namespace NsbBridgePlayground.OrderProcessor.Handlers;
