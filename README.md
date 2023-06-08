@@ -39,6 +39,12 @@ OrderProcessor -[dotted]> Shipping : ""OrderCreated""
 ```puml
 @startuml
 
+legend top right
+| Pattern  | |
+| ""----"" | //Original// message        |
+| ""...."" | Message //moved// by Bridge |
+endlegend
+
 Sender: sends ""CreateOrder"" command
 Sender: processes ""CreateOrderResponse"" message
 
@@ -56,12 +62,12 @@ OrderProcessor: reply ""CreateOrderResponse"" message
 
 Notifier: process ""OrderCreated"" events
 Shipping: process ""OrderCreated"" events
-
+ 
 OrderProcessor -[#green,dashed]> Bridge : **(3)** ""OrderCreated""
-OrderProcessor -[#green,dashed]> Bridge : **(3)** ""CreateOrderResponse""
+OrderProcessor -[#magenta,dashed]> Bridge : **(3)** ""CreateOrderResponse""
 Bridge -[#green,dotted]-> Notifier : **(4)** ""OrderCreated""
 Bridge -[#green,dotted]-> Shipping : **(4)** ""OrderCreated""
-Bridge -[#green,dotted]-> Sender : **(4)** ""CreateOrderResponse""
+Bridge -[#magenta,dotted]-> Sender : **(4)** ""CreateOrderResponse""
 ```
 
 ## Required Changes
