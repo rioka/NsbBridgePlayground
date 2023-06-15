@@ -38,6 +38,7 @@ public class Bootstrapper
   {
     config.Conventions().DefiningCommandsAs(t => t.Namespace?.Contains("Messages.Commands") ?? false);
     config.Conventions().DefiningEventsAs(t => t.Namespace?.Contains("Messages.Events") ?? false);
+    config.Conventions().DefiningMessagesAs(t => t.Namespace?.EndsWith("Messages") ?? false);
   }
 
   private static void ConfigureTransport(

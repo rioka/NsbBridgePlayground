@@ -6,7 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(RootNamespace)' != 'NsbBridgePlayground.Bridge'">
+  <!-- NsbBridgePlayground.Bridge requires NserviceBus v8 -->
+  <ItemGroup Condition="'$(ProjectName)' != 'NsbBridgePlayground.Bridge'">
     <!-- explicit reference to NServiceBus not to get some lower version -->
     <PackageReference Include="NServiceBus" Version="7.8.*" />
     <PackageReference Include="NServiceBus.Transport.SqlServer" Version="6.3.*" />

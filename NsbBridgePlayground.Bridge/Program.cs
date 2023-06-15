@@ -24,14 +24,14 @@ internal class Program
       .UseConsoleLifetime()
       .UseNServiceBusBridge((ctx, config) => {
 
-        AddConfiguration(config, Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"));
         AddConfiguration(config, Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("OrderProcessor"));
-        AddConfiguration(config, Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"), subscribedEvents: new [] {
-          typeof(OrderCreated)
-        });
         AddConfiguration(config, Endpoints.Shipping, ctx.Configuration.GetConnectionString("Shipping"), subscribedEvents: new [] {
           typeof(OrderCreated)
         });
+        AddConfiguration(config, Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"), subscribedEvents: new [] {
+          typeof(OrderCreated)
+        });
+        AddConfiguration(config, Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"));
         
         config.RunInReceiveOnlyTransactionMode();
       });
@@ -39,7 +39,8 @@ internal class Program
     return hb;
   }
 
-  private static void AddConfiguration(BridgeConfiguration bridgeConfig,
+  private static void AddConfiguration(
+    BridgeConfiguration bridgeConfig,
     string endpoint,
     string? connectionString,
     string? nsbSchema = "nsb",
@@ -59,7 +60,7 @@ internal class Program
     
     var bridgeTransport = new BridgeTransport(sqlTransport) {
       // all transports are SqlServerTransport, so we give each a name to be able to identify the proper one in logs
-      Name = $"For{endpoint}",
+      Name = $"SQL-{endpoint}",
       AutoCreateQueues = true
     };
 
