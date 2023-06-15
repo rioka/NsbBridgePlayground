@@ -224,7 +224,7 @@ dotnet_naming_style.begins_with_i.required_suffix =
 dotnet_naming_style.begins_with_i.word_separator = 
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
-[*.{csproj,xml,props}]
+[*.{csproj,xml,props,json}]
 # Indentation and spacing
 indent_size = 2
 indent_style = space
