@@ -3,6 +3,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
+COPY ["Directory.Build.props", "/"]
 COPY ["NsbBridgePlayground.Bridge/NsbBridgePlayground.Bridge.csproj", "NsbBridgePlayground.Bridge/"]
 COPY ["NsbBridgePlayground.Common/NsbBridgePlayground.Common.csproj", "NsbBridgePlayground.Common/"]
 RUN dotnet restore "NsbBridgePlayground.Bridge/NsbBridgePlayground.Bridge.csproj"
