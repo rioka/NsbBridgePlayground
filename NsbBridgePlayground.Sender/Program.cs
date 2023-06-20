@@ -19,7 +19,7 @@ internal partial class Program
     using (host)
     {
       var config = host.Services.GetRequiredService<IConfiguration>();
-      await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Data"));
+      await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Sender"));
       
       await host.StartAsync();
       var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
@@ -36,10 +36,14 @@ internal partial class Program
   {
     var hb = Host
       .CreateDefaultBuilder(args)
+      .ConfigureHostConfiguration(builder => {
+
+        builder.AddEnvironmentVariables("NSBBRIDGE_");
+      })
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.Sender, ctx.Configuration.GetConnectionString("Data"), messages: new [] {
+        var endpointConfig = Bootstrapper.Configure(Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"), messages: new [] {
           typeof(CreateOrder)
         });
         return endpointConfig;

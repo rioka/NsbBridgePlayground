@@ -21,6 +21,10 @@ internal class Program
   {
     var hb = Host
       .CreateDefaultBuilder(args)
+      .ConfigureHostConfiguration(builder => {
+
+        builder.AddEnvironmentVariables("NSBBRIDGE_");
+      })
       .UseConsoleLifetime()
       .UseNServiceBusBridge((ctx, config) => {
 
