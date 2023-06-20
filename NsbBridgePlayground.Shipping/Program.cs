@@ -24,7 +24,7 @@ internal class Program {
   {
     var hb = Host
       .CreateDefaultBuilder(args)
-      .ConfigureHostConfiguration(builder => {
+      .ConfigureAppConfiguration(builder => {
 
         builder.AddEnvironmentVariables("NSBBRIDGE_");
       })
