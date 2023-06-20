@@ -34,8 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bridge", "Bridge", "{D78855
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9ED8736B-6E4F-4D02-BF27-B5B30BC9F1EA}"
 	ProjectSection(SolutionItems) = preProject
-		build-image.ps1 = build-image.ps1
-		build-image.sh = build-image.sh
+		build-images.ps1 = build-images.ps1
+		build-images.sh = build-images.sh
 	EndProjectSection
 EndProject
 Global
