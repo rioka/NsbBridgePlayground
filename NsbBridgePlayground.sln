@@ -38,6 +38,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9ED8
 		build-images.sh = build-images.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{73C07FB6-E797-4147-9876-5B859C69471A}"
+	ProjectSection(SolutionItems) = preProject
+		databases\01_create_login.sql = databases\01_create_login.sql
+		databases\02_notifier.sql = databases\02_notifier.sql
+		databases\03_orderprocessor.sql = databases\03_orderprocessor.sql
+		databases\04_sender.sql = databases\04_sender.sql
+		databases\05_shipping.sql = databases\05_shipping.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,5 +92,6 @@ Global
 		{FFD337D5-FA98-40A0-8684-5FF66B261DC1} = {33563CBE-E6C2-478A-8FFF-691BC5B74FA0}
 		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52} = {D7885579-EB30-4844-B814-37A4E34EA44D}
 		{9ED8736B-6E4F-4D02-BF27-B5B30BC9F1EA} = {6BBDB0AD-378B-49C5-8F86-6977C8A41099}
+		{73C07FB6-E797-4147-9876-5B859C69471A} = {6BBDB0AD-378B-49C5-8F86-6977C8A41099}
 	EndGlobalSection
 EndGlobal
