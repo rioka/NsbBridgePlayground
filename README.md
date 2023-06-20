@@ -107,6 +107,12 @@ Initially, the system does not depend on the bridge.
  
   Does it implement any circuit-breaker, similar to `NServiceBus.Router`?
 
+## Dockerize
+
+Each project has its `Dockerfile`
+
+> When using Rancher Desktop, I am not able to connect to SQL Server container using the _common_ hostname: I have to use the IP address (in docker subnet). 
+
 ## References
 
 - [Migrating from NServiceBus.Router to NServiceBus.Transport.Bridge](https://docs.particular.net/nservicebus/bridge/migrating-from-router)

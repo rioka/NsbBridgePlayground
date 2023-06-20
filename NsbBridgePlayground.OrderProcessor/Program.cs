@@ -16,7 +16,7 @@ internal class Program
       .Build();
 
     var config = host.Services.GetRequiredService<IConfiguration>();
-    await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("Data"));
+    await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("OrderProcessor"));
 
     await host.RunAsync();
   }
@@ -25,10 +25,14 @@ internal class Program
   {
     var hb = Host
       .CreateDefaultBuilder(args)
+      .ConfigureAppConfiguration(builder => {
+
+        builder.AddEnvironmentVariables("NSBBRIDGE_");
+      })
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("Data"));
+        var endpointConfig = Bootstrapper.Configure(Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("OrderProcessor"));
         return endpointConfig;
       });
 
