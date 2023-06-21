@@ -5,20 +5,6 @@ GO
 
 USE [NsbBridgePlayground.Notifier]
 
-IF NOT EXISTS
-(
-  SELECT 1 
-  FROM [INFORMATION_SCHEMA].[SCHEMATA]
-  WHERE [SCHEMA_NAME] = N'nsb'
-)
-BEGIN
-
-  /* The schema must be run in its own batch! */
-  EXEC(N'CREATE SCHEMA [nsb] AUTHORIZATION [dbo]');
-
-END    
-GO
-
 /****** Object:  User [docker]    Script Date: 20/06/2023 12:33:51 ******/
 CREATE USER [docker] FOR LOGIN [docker] WITH DEFAULT_SCHEMA=[dbo]
 GO
