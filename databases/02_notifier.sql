@@ -5,12 +5,21 @@ GO
 
 USE [NsbBridgePlayground.Notifier]
 
-/****** Object:  User [docker]    Script Date: 20/06/2023 12:33:51 ******/
-CREATE USER [docker] FOR LOGIN [docker] WITH DEFAULT_SCHEMA=[dbo]
-GO
-ALTER ROLE [db_datareader] ADD MEMBER [docker]
-GO
-ALTER ROLE [db_datawriter] ADD MEMBER [docker]
+/* 
+    Currently, in AWS RDS I cannot create a login and grant access from our network,
+    so first check if the expected login exists.
+*/    
+IF EXISTS
+(
+  SELECT name  
+    FROM master.sys.server_principals
+    WHERE name = 'docker'
+)
+BEGIN
+  CREATE USER [docker] FOR LOGIN [docker] WITH DEFAULT_SCHEMA=[dbo]
+  ALTER ROLE [db_datareader] ADD MEMBER [docker]
+  ALTER ROLE [db_datawriter] ADD MEMBER [docker]
+END
 GO
 /****** Object:  Schema [nsb]    Script Date: 20/06/2023 12:33:51 ******/
 CREATE SCHEMA [nsb]
