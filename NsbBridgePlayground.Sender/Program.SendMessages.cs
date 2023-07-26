@@ -56,32 +56,42 @@ internal partial class Program
 
   private static async Task BatchCreate(IMessageSession session, int count)
   {
-    var tasks = new Task[count];
-
     Console.WriteLine($"Sending {count} message(s)...");
-    for (int i = 0; i < count; i++)
-    {
-      var createOrder = new CreateOrder() {
-        Id = Guid.NewGuid()
-      };
-      tasks[i] = session.Send(createOrder);
-    }
 
-    var all = Task.WhenAll(tasks); 
+    Task? all = default; 
+
     try
     {
+      var tasks = new Task[count];
+      for (int i = 0; i < count; i++)
+      {
+        var createOrder = new CreateOrder() {
+          Id = Guid.NewGuid()
+        };
+        // we can get an exception here, eg before tasks are awaited
+        // under heavy load, we may experience timeouts when trying to connect to the server
+        tasks[i] = session.Send(createOrder);
+      }
+
+      all = Task.WhenAll(tasks);
       await all;
     }
     catch (Exception e)
     {
-      var failed = all.Exception?.InnerExceptions.Count ?? 0;
+      var failed = all?.Exception?.InnerExceptions.Count ?? 0;
       Console.WriteLine($"{failed} 'Send' operation(s) failed");
       if (failed > 0)
       {
+        // failed while awaiting
         foreach (var ie in all.Exception!.InnerExceptions)
         {
           Console.WriteLine(ie.Message);
         }     
+      }
+      else
+      {
+        // failed before awaiting (TBC)
+        Console.WriteLine(e.Message);
       }
     }
   }
