@@ -27,7 +27,14 @@ internal partial class Program
           var createOrder = new CreateOrder() {
             Id = Guid.NewGuid()
           };
-          await session.Send(createOrder);
+          try
+          {
+            await session.Send(createOrder);
+          }
+          catch (Exception e)
+          {
+            Console.WriteLine(e.Message);
+          }
           break;
 
         case ConsoleKey.D2:
@@ -50,7 +57,8 @@ internal partial class Program
   private static async Task BatchCreate(IMessageSession session, int count)
   {
     var tasks = new Task[count];
-    
+
+    Console.WriteLine($"Sending {count} message(s)...");
     for (int i = 0; i < count; i++)
     {
       var createOrder = new CreateOrder() {
@@ -59,6 +67,22 @@ internal partial class Program
       tasks[i] = session.Send(createOrder);
     }
 
-    await Task.WhenAll(tasks);
+    var all = Task.WhenAll(tasks); 
+    try
+    {
+      await all;
+    }
+    catch (Exception e)
+    {
+      var failed = all.Exception?.InnerExceptions.Count ?? 0;
+      Console.WriteLine($"{failed} 'Send' operation(s) failed");
+      if (failed > 0)
+      {
+        foreach (var ie in all.Exception!.InnerExceptions)
+        {
+          Console.WriteLine(ie.Message);
+        }     
+      }
+    }
   }
 }
