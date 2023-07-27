@@ -25,8 +25,9 @@ internal partial class Program
       await host.StartAsync();
       var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
       var session = host.Services.GetRequiredService<IMessageSession>();
+      var logger = host.Services.GetRequiredService<ILogger<Program>>();
 
-      await SendMessages(session); 
+      await SendMessages(session, logger); 
 
       lifetime.StopApplication();
       await host.WaitForShutdownAsync();

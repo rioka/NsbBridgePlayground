@@ -16,8 +16,7 @@ internal class CreateOrderResponseHandler : IHandleMessages<CreateOrderResponse>
   public Task Handle(CreateOrderResponse message, IMessageHandlerContext context)
   {
     _logger.LogInformation("Processing {MessageType} for {OrderId}", nameof(CreateOrderResponse), message.Id);
-
-    Console.WriteLine($"Order {message.Id} was created{Environment.NewLine}\t{message.Notes ?? "<No notes found>"}");
+    _logger.LogInformation("Order {Id} was created - {Notes}", message.Id, message.Notes ?? "<No notes found>");
     
     return Task.CompletedTask;
   }

@@ -6,4 +6,6 @@ namespace NsbBridgePlayground.Common.Messages.Commands;
 public class CreateOrder
 {
   public Guid Id { get; set; }
+
+  public string Notes { get; set; }
 }
