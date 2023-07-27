@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using NsbBridgePlayground.Bootstrap;
 using NsbBridgePlayground.Bootstrap.Infrastructure;
 using NsbBridgePlayground.Common;
@@ -39,6 +40,10 @@ internal partial class Program
       .ConfigureAppConfiguration(builder => {
 
         builder.AddEnvironmentVariables("NSBBRIDGE_");
+      })
+      .ConfigureLogging(builder => {
+
+        builder.AddSeq();
       })
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
