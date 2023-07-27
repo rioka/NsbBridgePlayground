@@ -83,7 +83,7 @@ internal partial class Program
       if (failed > 0)
       {
         // failed while awaiting
-        foreach (var ie in all.Exception!.InnerExceptions)
+        foreach (var ie in all!.Exception!.InnerExceptions)
         {
           Console.WriteLine(ie.Message);
         }     
