@@ -71,7 +71,7 @@ internal partial class Program
   {
     // 10-11 words
     // 4-5 sentences
-    command.Notes = String.Join(Environment.NewLine, LoremNET.Lorem.Paragraphs(10, 11, 4, 5, 5, 15));
+    command.Notes = string.Join(Environment.NewLine, LoremNET.Lorem.Paragraphs(10, 11, 4, 5, 5, 15));
   }
 
   private static async Task BatchCreate(IMessageSession session, int count, bool setNotes, ILogger<Program> logger)
