@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Lorem.Universal.Net" Version="4.0.80" />
     <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.*" />
+    <PackageReference Include="Seq.Extensions.Logging" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
