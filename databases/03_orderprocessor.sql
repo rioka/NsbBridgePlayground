@@ -23,6 +23,7 @@ BEGIN
   ALTER ROLE [db_datawriter] ADD MEMBER [docker]
 END
 GO
+
 /****** Object:  Schema [nsb]    Script Date: 20/06/2023 12:42:23 ******/
 CREATE SCHEMA [nsb]
 GO
@@ -201,4 +202,13 @@ PRIMARY KEY CLUSTERED
 	[Topic] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+/* Business data */
+CREATE TABLE [dbo].[Orders](
+    [Id] int IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+    [UId] uniqueidentifier NOT NULL,
+    [Notes] nvarchar(max) NULL,
+    [CreatedAt] DATETIME2 NOT NULL
+)
 GO
