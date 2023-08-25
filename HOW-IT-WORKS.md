@@ -1,3 +1,13 @@
+- When the bridge is configured, it is told which queue it should look at; then, it starts peeking messages from those queues, and move each message to its actual recipient.
+
+  Basically, each database includes queues for all endpoints it interacts with (the bridge will create these queue, if required): an endpoint simply puts messages in the "correct" queue, but then the bridge will read that message, and move it to the final recipient, based on its (i.e. the bridge's) configuration.
+
+  As a result of this approach, each database will have queues (tables) for all endpoints the bridge is aware of 
+
+  For each endpoint, the bridge then knows which database it must connect to.
+
+  > This is clearly a different approach from the router which, for the sender (or publisher), is **the** recipient (the sender does not know who the final recipient is).  
+
 - `Sender` sends a command
 
   - A message is queued into `[nsb].[OrderProcessor]` in database `NsbBridgePlayground.Sender`

@@ -43,6 +43,22 @@ internal class Program
     return hb;
   }
 
+  /// <summary>
+  /// Instruct the bridge to look at queue for <paramref name="endpoint"/>.
+  /// </summary>
+  /// <param name="bridgeConfig">Configuration</param>
+  /// <param name="endpoint">Name of the endpoint the bridge is configured for</param>
+  /// <param name="connectionString">Connection string for <paramref name="endpoint"/></param>
+  /// <param name="nsbSchema">Name of the schema (optional, default to <c>nsb</c>).</param>
+  /// <param name="subscribedEvents">
+  /// <para>
+  ///   An optional list of events <paramref name="endpoint"/> has subscribed to.
+  /// </para>
+  /// <para>
+  ///   For each type in this list, if that type is decorated with <see cref="NsbEventAttribute"/>,
+  ///   the bridge will send a subscription request to <see cref="NsbEventAttribute.Publisher"/>.
+  /// </para>
+  /// </param>
   private static void AddConfiguration(
     BridgeConfiguration bridgeConfig,
     string endpoint,
