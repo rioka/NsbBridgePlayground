@@ -32,7 +32,10 @@ internal class Program
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.Notifier, ctx.Configuration.GetConnectionString("Notifier"));
+        var endpointConfig = Bootstrapper.Configure(
+          Endpoints.Notifier, 
+          ctx.Configuration.GetConnectionString("Notifier"),
+          "NsbBridgePlayground.Notifier");
         return endpointConfig;
       });
 

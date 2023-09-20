@@ -49,9 +49,13 @@ internal partial class Program
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"), messages: new [] {
+        var endpointConfig = Bootstrapper.Configure(
+          Endpoints.Sender, ctx.Configuration.GetConnectionString("Sender"), 
+          "NsbBridgePlayground.Notifier",
+          messages: new [] {
           typeof(CreateOrder)
         });
+
         return endpointConfig;
       });
     

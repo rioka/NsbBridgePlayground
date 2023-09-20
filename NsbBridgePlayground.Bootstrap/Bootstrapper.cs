@@ -7,21 +7,22 @@ namespace NsbBridgePlayground.Bootstrap;
 
 public class Bootstrapper
 {
-  public static Task<IEndpointInstance> Start(string endpointName, string connectionString) 
+  public static Task<IEndpointInstance> Start(string endpointName, string connectionString, string auditTableDb) 
   {
-    return Endpoint.Start(Configure(endpointName, connectionString));
+    return Endpoint.Start(Configure(endpointName, connectionString, auditTableDb));
   }
 
   public static EndpointConfiguration Configure(
     string endpointName, 
-    string connectionString, 
+    string connectionString,
+    string auditQueueDb,
     string? nsbSchema = "nsb", 
     IEnumerable<Type>? messages = null)
   {
     var config = new EndpointConfiguration(endpointName);
 
     ConfigureConventions(config);
-    ConfigureTransport(config, connectionString, nsbSchema, messages);
+    ConfigureTransport(config, connectionString, auditQueueDb, nsbSchema, messages);
     ConfigurePersistence(config, connectionString, nsbSchema);
 
     config.AuditProcessedMessagesTo("audit");
@@ -44,6 +45,7 @@ public class Bootstrapper
   private static void ConfigureTransport(
     EndpointConfiguration config, 
     string connectionString,
+    string auditQueueDb,
     string? nsbSchema = null,
     IEnumerable<Type>? messages = null)
   {
@@ -57,6 +59,12 @@ public class Bootstrapper
       transport.DefaultSchema(nsbSchema);
     }
 
+    transport.UseCatalogForQueue("audit", auditQueueDb);
+    
+    transport
+      .SubscriptionSettings()
+      .DisableSubscriptionCache();
+    
     ConfigureRoutes(transport.Routing(), messages ?? Enumerable.Empty<Type>());
   }
 
