@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ServerGarbageCollection Condition=" '$(Configuration)' == 'Release'">true</ServerGarbageCollection>
   </PropertyGroup>
 
   <ItemGroup>
