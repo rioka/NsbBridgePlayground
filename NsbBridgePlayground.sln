@@ -47,6 +47,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{
 		databases\05_shipping.sql = databases\05_shipping.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Router", "Router", "{80E85E66-B69E-49C2-8618-648E5AAAC796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Router", "NsbBridgePlayground.Router\NsbBridgePlayground.Router.csproj", "{F3D2A21F-04C8-429E-87AB-8533B5751288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +88,10 @@ Global
 		{FFD337D5-FA98-40A0-8684-5FF66B261DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD337D5-FA98-40A0-8684-5FF66B261DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD337D5-FA98-40A0-8684-5FF66B261DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3D2A21F-04C8-429E-87AB-8533B5751288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D2A21F-04C8-429E-87AB-8533B5751288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D2A21F-04C8-429E-87AB-8533B5751288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D2A21F-04C8-429E-87AB-8533B5751288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CCD4FB1C-650B-44F5-8079-B11C50723796} = {33563CBE-E6C2-478A-8FFF-691BC5B74FA0}
@@ -93,5 +101,6 @@ Global
 		{B81EC69D-9154-41B6-8A8C-F4EEEC225B52} = {D7885579-EB30-4844-B814-37A4E34EA44D}
 		{9ED8736B-6E4F-4D02-BF27-B5B30BC9F1EA} = {6BBDB0AD-378B-49C5-8F86-6977C8A41099}
 		{73C07FB6-E797-4147-9876-5B859C69471A} = {6BBDB0AD-378B-49C5-8F86-6977C8A41099}
+		{F3D2A21F-04C8-429E-87AB-8533B5751288} = {80E85E66-B69E-49C2-8618-648E5AAAC796}
 	EndGlobalSection
 EndGlobal
