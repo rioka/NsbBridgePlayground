@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <DefineConstants>$(DefineConstants);STANDALONE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lorem.Universal.Net" Version="4.0.80"/>
+    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.*"/>
+    <PackageReference Include="Seq.Extensions.Logging" Version="6.1.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NsbBridgePlayground.StandAlone.Bootstrap\NsbBridgePlayground.StandAlone.Bootstrap.csproj" />
+    <ProjectReference Include="..\..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\NsbBridgePlayground.Sender\Handlers\CreateOrderResponseHandler.cs">
+      <Link>Handlers\CreateOrderResponseHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\NsbBridgePlayground.Sender\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\NsbBridgePlayground.Sender\Program.SendMessages.cs">
+      <Link>Program.SendMessages.cs</Link>
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\appsettings.json">
+      <Link>appsettings.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+</Project>

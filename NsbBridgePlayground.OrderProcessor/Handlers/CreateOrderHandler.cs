@@ -6,7 +6,11 @@ using NsbBridgePlayground.Common.Messages.Events;
 using NServiceBus;
 using NServiceBus.Persistence;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.OrderProcessor.Handlers;
+#else
 namespace NsbBridgePlayground.OrderProcessor.Handlers;
+#endif
 
 internal class CreateOrderHandler : IHandleMessages<CreateOrder>
 {

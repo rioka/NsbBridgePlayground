@@ -1,7 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.Bootstrap.Infrastructure;
+#else
 namespace NsbBridgePlayground.Bootstrap.Infrastructure;
+#endif
 
 public class DbHelpers
 {
