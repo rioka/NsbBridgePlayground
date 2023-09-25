@@ -161,7 +161,6 @@
 
 - Why is header `NServiceBus.ReplyToAddress` changed to `Sender@[nsb]@[NsbBridgePlayground.Shipping]` (or `Sender@[nsb]@[NsbBridgePlayground.Notifier]`, depending on the order endpoints are added to the bridge configuration)?
 
-
 ## Recap
 
 ### Logical flow
