@@ -2,7 +2,11 @@ using Microsoft.Extensions.Logging;
 using NsbBridgePlayground.Common.Messages.Events;
 using NServiceBus;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.Notifier.Handlers;
+#else
 namespace NsbBridgePlayground.Notifier.Handlers;
+#endif
 
 internal class OrderCreatedHandler : IHandleMessages<OrderCreated>
 {

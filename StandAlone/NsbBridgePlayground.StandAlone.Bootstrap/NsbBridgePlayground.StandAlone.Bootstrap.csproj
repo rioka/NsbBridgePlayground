@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);STANDALONE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\NsbBridgePlayground.Bootstrap\Bootstrapper.cs">
+      <Link>Bootstrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\NsbBridgePlayground.Bootstrap\Infrastructure\DbHelpers.cs">
+      <Link>Infrastructure\DbHelpers.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\NsbBridgePlayground.Common\NsbBridgePlayground.Common.csproj" />
+  </ItemGroup>
+  
+</Project>

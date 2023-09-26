@@ -32,6 +32,8 @@ OrderProcessor --> Sender : ""CreateOrderResponse""
 
 OrderProcessor -[dotted]> Notifier : ""OrderCreated""
 OrderProcessor -[dotted]> Shipping : ""OrderCreated""
+
+@enduml
 ```
 
 ### Using the bridge
@@ -68,6 +70,8 @@ OrderProcessor -[#magenta,dashed]> Bridge : **(3)** ""CreateOrderResponse""
 Bridge -[#green,dotted]-> Notifier : **(4)** ""OrderCreated""
 Bridge -[#green,dotted]-> Shipping : **(4)** ""OrderCreated""
 Bridge -[#magenta,dotted]-> Sender : **(4)** ""CreateOrderResponse""
+
+@enduml
 ```
 
 ## Required Changes

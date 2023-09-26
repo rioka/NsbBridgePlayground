@@ -3,7 +3,11 @@ using NsbBridgePlayground.Common.Attributes;
 using NServiceBus;
 using System.Reflection;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.Bootstrap;
+#else
 namespace NsbBridgePlayground.Bootstrap;
+#endif
 
 public class Bootstrapper
 {

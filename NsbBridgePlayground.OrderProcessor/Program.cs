@@ -1,22 +1,37 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+#if STANDALONE
+using NsbBridgePlayground.StandAlone.Bootstrap;
+using NsbBridgePlayground.StandAlone.Bootstrap.Infrastructure;
+#else
 using NsbBridgePlayground.Bootstrap;
 using NsbBridgePlayground.Bootstrap.Infrastructure;
+#endif
 using NsbBridgePlayground.Common;
 using NServiceBus;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.OrderProcessor;
+#else
 namespace NsbBridgePlayground.OrderProcessor;
+#endif
 
 internal class Program
 {
+#if STANDALONE
+  private static readonly string ConnectionStringName = "NsbBridgePlayground";
+#else
+  private static readonly string ConnectionStringName = "OrderProcessor";
+#endif
+  
   public static async Task Main(string[] args)
   {
     var host = CreateHostBuilder(args)
       .Build();
 
     var config = host.Services.GetRequiredService<IConfiguration>();
-    await DbHelpers.EnsureDatabaseExists(config.GetConnectionString("OrderProcessor"));
+    await DbHelpers.EnsureDatabaseExists(config.GetConnectionString(ConnectionStringName));
 
     await host.RunAsync();
   }
@@ -32,7 +47,7 @@ internal class Program
       .UseConsoleLifetime()
       .UseNServiceBus(ctx => {
 
-        var endpointConfig = Bootstrapper.Configure(Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString("OrderProcessor"));
+        var endpointConfig = Bootstrapper.Configure(Endpoints.OrderProcessor, ctx.Configuration.GetConnectionString(ConnectionStringName));
         return endpointConfig;
       });
 

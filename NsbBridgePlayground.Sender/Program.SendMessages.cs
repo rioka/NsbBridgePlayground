@@ -2,7 +2,11 @@
 using NsbBridgePlayground.Common.Messages.Commands;
 using NServiceBus;
 
+#if STANDALONE
+namespace NsbBridgePlayground.StandAlone.Sender;
+#else
 namespace NsbBridgePlayground.Sender;
+#endif
 
 internal partial class Program
 {
