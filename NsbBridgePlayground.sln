@@ -46,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{
 		databases\03_orderprocessor.sql = databases\03_orderprocessor.sql
 		databases\04_sender.sql = databases\04_sender.sql
 		databases\05_shipping.sql = databases\05_shipping.sql
+		databases\get-content-from-queues.sql = databases\get-content-from-queues.sql
+		databases\reset-all-tables.sql = databases\reset-all-tables.sql
 	EndProjectSection
 EndProject
 Global
