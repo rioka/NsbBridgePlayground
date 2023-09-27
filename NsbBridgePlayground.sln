@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		HOW-IT-WORKS.md = HOW-IT-WORKS.md
 		env-vars = env-vars
+		TWO-SQLSERVER-INSTANCES.md = TWO-SQLSERVER-INSTANCES.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NsbBridgePlayground.Sender", "NsbBridgePlayground.Sender\NsbBridgePlayground.Sender.csproj", "{94233011-B3E0-4DBB-91AF-FC099F47026C}"
