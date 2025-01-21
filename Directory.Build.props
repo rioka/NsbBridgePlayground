@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <!-- NsbBridgePlayground.Bridge requires NserviceBus v8 -->
-  <ItemGroup Condition="'$(ProjectName)' != 'NsbBridgePlayground.Bridge'">
+  <ItemGroup Condition="'$(ProjectName)' != 'NsbBridgePlayground.Bridge' AND '$(ProjectName)' != 'NsbBridgePlayground.Common'">
     <!-- explicit reference to NServiceBus not to get some lower version -->
     <PackageReference Include="NServiceBus" />
     <PackageReference Include="NServiceBus.Transport.SqlServer" />
