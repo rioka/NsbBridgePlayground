@@ -7,6 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG CONFIGURATION
 WORKDIR /src
 COPY ["Directory.Build.props", "/"]
+COPY ["Directory.Packages.props", "/"]
 COPY ["NsbBridgePlayground.Shipping/NsbBridgePlayground.Shipping.csproj", "NsbBridgePlayground.Shipping/"]
 COPY ["NsbBridgePlayground.Common/NsbBridgePlayground.Common.csproj", "NsbBridgePlayground.Common/"]
 COPY ["NsbBridgePlayground.Bootstrap/NsbBridgePlayground.Bootstrap.csproj", "NsbBridgePlayground.Bootstrap/"]
