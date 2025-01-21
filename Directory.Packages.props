@@ -1,0 +1,27 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enable central package management, https://learn.microsoft.com/en-us/nuget/consume-packages/Central-Package-Management -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageVersion Include="Dapper" Version="2.0.151" />
+    <PackageVersion Include="Lorem.Universal.Net" Version="4.0.80" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageVersion Include="NServiceBus.MessagingBridge" Version="2.3.1" />
+    <PackageVersion Include="Seq.Extensions.Logging" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*USE_NSB_V7(;.*)*$'))">
+    <PackageVersion Include="NServiceBus" Version="7.8.6" />
+    <PackageVersion Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
+    <PackageVersion Include="NServiceBus.Persistence.Sql" Version="6.6.5" />
+    <PackageVersion Include="NServiceBus.Transport.SqlServer" Version="6.3.8" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*USE_NSB_V8(;.*)*$'))">
+    <PackageVersion Include="NServiceBus" Version="8.2.4" />
+    <PackageVersion Include="NServiceBus.Transport.SqlServer" Version="7.0.8" />
+  </ItemGroup>
+  
+</Project>
