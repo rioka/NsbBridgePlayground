@@ -4,12 +4,19 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   
-  <ItemGroup>
+  <ItemGroup Label="Common packages">
     <PackageVersion Include="Dapper" Version="2.0.151" />
     <PackageVersion Include="Lorem.Universal.Net" Version="4.0.80" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageVersion Include="NServiceBus.MessagingBridge" Version="4.0.2" />
     <PackageVersion Include="Seq.Extensions.Logging" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Label=".NET 7 packages" Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Label=".NET 8 packages" Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*USE_NSB_V7(;.*)*$'))">
