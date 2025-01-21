@@ -3,10 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DefineConstants>$(DefineConstants);USE_NSB_V7</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
+    <PackageReference Include="NServiceBus.Extensions.Hosting" />
   </ItemGroup>
 
   <ItemGroup>
