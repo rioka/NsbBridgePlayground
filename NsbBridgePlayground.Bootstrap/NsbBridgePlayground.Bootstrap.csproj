@@ -1,7 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);USE_NSB_V7</DefineConstants>
+  </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.6.*" />
+    <PackageReference Include="NServiceBus.Persistence.Sql" />
   </ItemGroup>
 
   <ItemGroup>
