@@ -48,7 +48,7 @@ b -[#orange,dashed]-> app3 : " (3) ""OrderCreated"""
 b -[#orange,dashed]-> app4 : " (3) ""OrderCreated"""
 ```
 
-In this set up, everything works; anyway, I noticed that, when `CreateOrder` is moved to `N2-database`, bridge changes `ReplyToAddress` from `[N1]@[nsb]@[N1-datbase]` to `[N1]@[nsb]@[N3-database]`.
+In this set up, everything works; anyway, I noticed that, when `CreateOrder` is moved to `N2-database`, bridge changes `ReplyToAddress` from `[N1]@[nsb]@[N1-database]` to `[N1]@[nsb]@[N3-database]`.
 
 > I would have expected the value to be `[N1]@[nsb]@[N2-database]`
  
